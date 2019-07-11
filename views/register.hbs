@@ -1,0 +1,56 @@
+	    <nav class="navbar navbar-expand-lg navbar navbar-light bg-transparent">
+		<a class="navbar-brand" href="/">Jersey Pro</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+	            
+	
+			</ul>
+			{{#if user}}
+	<div>
+	<span> <img src="https://img.icons8.com/cotton/64/000000/gender-neutral-user.png">{{user.username}}</span><a href="/users/logout"><img src="https://img.icons8.com/metro/26/000000/exit.png"></a></div>
+	
+	{{else}}
+	<div>
+		<a href="/users/login" class="btn btn-warning">Login</a>
+	</div>
+	<div>
+		<a href="/users/register" class="btn btn-warning">register</a>
+	</div>
+	{{/if}}
+	
+		</div>
+	</nav>
+	
+<div class="container">
+    <h1>User Registration</h1>
+    {{#each errors}}
+    <div class="alert alert-danger">
+        {{this}}
+    </div>
+    {{/each}}
+    <form method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" id="username" name="username" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" id="email" name="email" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" type="password" name="password" />
+        </div>
+        <div class="form-group">
+            <label for="passwordConf">Password Confirmation</label>
+            <input class="form-control" id="passwordConf" type="password" name="passwordConf" />
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a class="btn btn-primary" role="button" href="/">Cancel</a>
+    </form>
+</div>

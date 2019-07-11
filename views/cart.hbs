@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar navbar-light bg-transparent">
+	<a class="navbar-brand" href="/">JerseyPro</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+            
+
+
+		</ul>
+        <div id="cartCount">{{cartCount}}</div>
+        <a href="/cart"><img src="https://img.icons8.com/dotty/80/000000/shopping-cart.png"></a>
+        {{#if user}}
+<div>
+<span> <img src="https://img.icons8.com/cotton/64/000000/gender-neutral-user.png"> {{user.username}}</span>
+<a href="/users/logout"><img src="https://img.icons8.com/metro/26/000000/exit.png"></a></div>
+
+{{/if}}
+	</div>
+</nav>
+
+<div class="container">
+<p>Cart Count: <span id="cartCount">{{cartCount}}</span></p>
+
+<button type="button" class="btn btn-primary" onclick="deleteCart()">Empty Cart</button>
+<ul id="cartItem">
+    {{#each cart}}
+    <li>{{this.name}}
+    {{#if this.customizations}}
+    (
+        {{#each this.customizations}}
+            {{this.name}},
+        {{/each}}
+    )
+    {{/if}} <input name="quantity" value="{{this.quantity}}" type="text">
+    <button type="button" onclick="updateItem(this, {{this.cart_id}})">Update</button>
+    <button type="button" onclick="deleteItem(this, {{this.cart_id}})">Remove</button>
+    </li>
+
+{{/each}}
+</ul>
+<a href="/cart/submit" class="btn btn-success">Submit Order</a>
+</div>
+
+<script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+<script src='/javascripts/cart.js'></script>
+

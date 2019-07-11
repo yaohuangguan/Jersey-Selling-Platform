@@ -1,0 +1,38 @@
+
+<div class="container">
+	    <nav class="navbar navbar-expand-lg navbar navbar-light bg-transparent">
+    	<a class="navbar-brand" href="/">Jersey Pro</a>
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+    	</button>
+    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    		<ul class="navbar-nav mr-auto">
+    			<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+    			
+    			<li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+                <li class="nav-item float-right"><a class="btn btn-warning" href="/users/login" role="button">Login</a> </li>
+                <li class="nav-item float-right"><a class="btn btn-warning float-right" href="/users/logout" role="button">Logout</a> </li>
+    		</ul>
+    	</div>
+    </nav>
+    
+    
+    
+     <div class="card-deck">
+        
+        
+            {{#each products}}
+            <div class="card sm-1">
+    
+    <img src="{{this.image}}" alt="{{this.name}}" class="card-img-top">
+    <div id="cartCount">{{cartCount}}</div>
+    
+    
+    <h1>{{this.name}}</h1>
+    <button type="button" class="btn btn-success" onclick="addToCart({{this.id}}, 1)">Add to cart</button>
+    
+    
+    </div>
+    {{/each}}
+    </div>
+</div>
